@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the btm_support_hp_slideshow_linked_image module.
+ */
+
+function btm_support_hp_slideshow_linked_image_install() {
+  drupal_set_message(st("The BTM Support HP Slideshow Linked Image module has been successfully installed."));
+}

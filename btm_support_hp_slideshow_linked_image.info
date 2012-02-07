@@ -1,0 +1,8 @@
+core = "6.x"
+description = "Support module for a the BTM Features Slideshow Linked Image
+module with linked images, no controls"
+name = "BTM Support Slideshow Linked Image"
+package = "Features"
+project = "btm_support_hp_slideshow_linked_image"
+dependencies[] = "jquery_plugin"
+version = "6.x-1.0"

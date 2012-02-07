@@ -1,0 +1,38 @@
+<?php
+
+//Main Paths
+define(BTM_SUPPORT_HP_SLIDESHOW_LINKED_IMAGE_MODULE_PATH, drupal_get_path('module', 'btm_support_hp_slideshow_linked_image'));
+
+/**
+* Implements hook_help().
+*/
+function btm_support_hp_slideshow_linked_image_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#btm_support_hp_slideshow_linked_image':
+      // Return a line-break version of the module README.txt
+      return filter_filter('process', 1, NULL, file_get_contents( dirname(__FILE__) . "/README.txt") );
+  }
+}
+
+/**
+* Implements hook_init().
+*/
+function btm_support_hp_slideshow_linked_image_init() {
+
+  // Since this file should only be loaded on the front page, don't declared in the info file.
+  // Instead make it page-dependent here
+  if (drupal_is_front_page()) {
+
+    // Make sure the jQuery plugins module is enabled
+    if (module_exists('jquery_plugin')) {
+
+      // Use jquery_plugin_add here. It assumes you have the jQuery Cycle plug-in installed. That plug-in
+      // comes bundled with the jQuery Plugins module, but you could also just drop it into a
+      // /plugins or /sites/all/plugins folder and call it with the same method.
+      jquery_plugin_add('cycle');
+
+      // Add the actual call for our cycle slide show plug-in.
+      drupal_add_js(BTM_SUPPORT_HP_SLIDESHOW_LINKED_IMAGE_MODULE_PATH . '/js/btm_support_hp_slideshow_linked_image.js');
+    }
+  }
+}
